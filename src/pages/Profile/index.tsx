@@ -1,6 +1,6 @@
 
 export const Profile = () => {
   return (
-    <div>Profile</div>
+    <div>Profile lorem100</div>
   )
 }
