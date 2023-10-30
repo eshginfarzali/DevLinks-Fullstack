@@ -1,7 +1,8 @@
+/*eslint-disable*/
 import styled from "styled-components";
 import { TbMenu } from "react-icons/tb";
 
-import { SubmitHandler, useForm } from "react-hook-form";
+// import { SubmitHandler, useForm } from "react-hook-form";
 import { FC } from "react";
 
 const Container = styled.div`
@@ -62,36 +63,37 @@ const Container = styled.div`
   }
 
 `;
-enum LinksEnum {
-  Github = "GitHub",
-  Gitlab = "GitLab",
-  Email = "Email",
-  Linkedin = "LinkedIn",
-  Youtube = "YouTube",
-  Facebook = "Facebook",
-  Twitter = "Twitter",
-  Instagram = "Instagram",
-  Twitch = "Twitch",
-  Devto = "Dev.to",
-  Codepen = "Codepen",
-  Codewars = "Codewars",
-  FreeCodeCamp = "FreeCodeCamp",
-  FrontendMentor = "Frontend Mentor",
-  StackOverflow = "Stack Overflow",
-}
+// enum LinksEnum {
+//   Github = "GitHub",
+//   Gitlab = "GitLab",
+//   Email = "Email",
+//   Linkedin = "LinkedIn",
+//   Youtube = "YouTube",
+//   Facebook = "Facebook",
+//   Twitter = "Twitter",
+//   Instagram = "Instagram",
+//   Twitch = "Twitch",
+//   Devto = "Dev.to",
+//   Codepen = "Codepen",
+//   Codewars = "Codewars",
+//   FreeCodeCamp = "FreeCodeCamp",
+//   FrontendMentor = "Frontend Mentor",
+//   StackOverflow = "Stack Overflow",
+// }
 
-interface IFormInput {
-  links: string;
-  social: LinksEnum;
-}
+// interface IFormInput {
+//   links: string;
+//   social: LinksEnum;
+// }
 interface AddLinkProps {
   count: number;
   onRemove: any;
+  register: any;
 }
 
-export const AddLink: FC<AddLinkProps> = ({ count, onRemove }) => {
-  const { register, handleSubmit } = useForm<IFormInput>();
-  const onSubmit: SubmitHandler<IFormInput> = (data) => console.log(data);
+export const AddLink: FC<AddLinkProps> = ({ count, onRemove, register }) => {
+  // const { register} = useForm<IFormInput>();
+  // const onSubmit: SubmitHandler<IFormInput> = (data) => console.log(data);
   return (
     <Container>
       <div className="link">
@@ -100,8 +102,7 @@ export const AddLink: FC<AddLinkProps> = ({ count, onRemove }) => {
         </p>
         <p onClick={() => onRemove(count)}>Remove</p>
       </div>
-      <form onSubmit={handleSubmit(onSubmit)}>
-        <select {...register("social")}>
+      <select {...register(`social${count}`)} defaultValue="">
           <option value=" <FaGithub /> Github">GitHub</option>
           <option value="<FaGitlab /> Gitlab">GitLab</option>
           <option value=" <FaEnvelope /> Email">Email</option>
@@ -126,10 +127,9 @@ export const AddLink: FC<AddLinkProps> = ({ count, onRemove }) => {
         <input
           type="text"
           placeholder="🔗 e.g https://github.com/eshginfarzali"
-          {...register("links", { required: "Email is required" })}
+         {...register(`links${count}`, { required: "Link is required" })}
         />
 
-      </form>
     </Container>
   );
 };
