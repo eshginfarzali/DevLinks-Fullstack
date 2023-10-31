@@ -16,9 +16,7 @@ export const FormLogin = () => {
   const [showPassword] = useState(false);
 
   const onSubmit: FormSubmitHandler = (data) => {
- 
-      console.log(data);
-    
+    console.log(data);
   };
 
   const validatePassword = (value: string) => {
@@ -34,21 +32,27 @@ export const FormLogin = () => {
         {...register("email", { required: "Email is required" })}
         control={control}
       />
+      <div>
+        {" "}
+        {errors?.email && (
+          <p style={{ color: "var(--error-color)" }}>
+            {errors?.email.message}
+          </p>
+        )}
+      </div>
       <Input
-         type={showPassword ? "text" : "password"}
+        type={showPassword ? "text" : "password"}
         label="Password"
         placeholder="🔒  Enter your password"
         {...register("password", { validate: validatePassword })}
         control={control}
       />
 
-      
       <div>
-        {errors?.email && (
-          <p style={{ color: "red" }}>{errors?.email.message}</p>
-        )}
         {errors?.password && (
-          <p style={{ color: "red" }}>{errors?.password.message}</p>
+          <p style={{ color: "var(--error-color)" }}>
+            {errors?.password.message}
+          </p>
         )}
       </div>
       <Button text="Login" />

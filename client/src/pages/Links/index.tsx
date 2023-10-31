@@ -1,7 +1,7 @@
 /* eslint-disable */
 
 import styled from "styled-components";
-import  { useState } from "react";
+import { useState } from "react";
 import { AddLink, Empty } from "../../components";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { v4 as uuidv4 } from "uuid";
@@ -54,60 +54,41 @@ const Container = styled.div`
     }
   }
 `;
-// enum LinksEnum {
-//   Github = "GitHub",
-//   Gitlab = "GitLab",
-//   Email = "Email",
-//   Linkedin = "LinkedIn",
-//   Youtube = "YouTube",
-//   Facebook = "Facebook",
-//   Twitter = "Twitter",
-//   Instagram = "Instagram",
-//   Twitch = "Twitch",
-//   Devto = "Dev.to",
-//   Codepen = "Codepen",
-//   Codewars = "Codewars",
-//   FreeCodeCamp = "FreeCodeCamp",
-//   FrontendMentor = "Frontend Mentor",
-//   StackOverflow = "Stack Overflow",
-// }
+
 interface IFormInput {
   social: string;
   links: string;
 }
 
 export const Links: React.FC = () => {
-  const [linkNew, setLinkNew] = useState<{ count: number; social: string; links: string; key: string }[]>([]);
+  const [linkNew, setLinkNew] = useState<
+    { count: number; social: string; links: string; key: string }[]
+  >([]);
   const [count, setCount] = useState(1);
-  const {
-    handleSubmit,
-    register,
-  
-  } = useForm<IFormInput>();
+  const { handleSubmit, register } = useForm<any>();
 
-  // const [linkData, setLinkData] = useState<Array<{ social?: LinksEnum; links?: string }| null>>([]);
-  const [linkData, setLinkData] = useState<Array<IFormInput| null>>([]);
+  const [linkData, setLinkData] = useState<Array<IFormInput | null>>([]);
 
-  const onSubmit: SubmitHandler<IFormInput> = (data) => {
+  const onSubmit: SubmitHandler<IFormInput> = (data: any) => {
    
-      setLinkData(() => {
-        const linkData = Array.from({ length: count }, (_, i) => i + 1)
-          .map((i) => {
-            const socialKey = `social${i}`;
-            const linksKey = `links${i}`;
-            if (data[socialKey] && data[linksKey]) {
-              return {
-                social: data[socialKey],
-                links: data[linksKey],
-              };
-            }
-            return null;
-          })
-          .filter((entry) => entry !== null);
-  
-        return linkData;
-      });
-    };
+    setLinkData(() => {
+      const linkData = Array.from({ length: count }, (_, i) => i + 1)
+        .map((i) => {
+          const socialKey = `social${i}`;
+          const linksKey = `links${i}`;
+          if (data[socialKey] && data[linksKey]) {
+            return {
+              social: data[socialKey], 
+              links: data[linksKey],
+            };
+          }
+          return null;
+        })
+        .filter((entry) => entry !== null);
+
+      return linkData;
+    });
+  };
 
   console.log("Converted Data:", linkData);
 

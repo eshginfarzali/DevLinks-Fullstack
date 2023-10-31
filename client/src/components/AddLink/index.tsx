@@ -63,28 +63,7 @@ const Container = styled.div`
   }
 
 `;
-// enum LinksEnum {
-//   Github = "GitHub",
-//   Gitlab = "GitLab",
-//   Email = "Email",
-//   Linkedin = "LinkedIn",
-//   Youtube = "YouTube",
-//   Facebook = "Facebook",
-//   Twitter = "Twitter",
-//   Instagram = "Instagram",
-//   Twitch = "Twitch",
-//   Devto = "Dev.to",
-//   Codepen = "Codepen",
-//   Codewars = "Codewars",
-//   FreeCodeCamp = "FreeCodeCamp",
-//   FrontendMentor = "Frontend Mentor",
-//   StackOverflow = "Stack Overflow",
-// }
 
-// interface IFormInput {
-//   links: string;
-//   social: LinksEnum;
-// }
 interface AddLinkProps {
   count: number;
   onRemove: any;
@@ -92,10 +71,8 @@ interface AddLinkProps {
 }
 
 export const AddLink: FC<AddLinkProps> = ({ count, onRemove, register }) => {
-  // const { register} = useForm<IFormInput>();
-  // const onSubmit: SubmitHandler<IFormInput> = (data) => console.log(data);
   return (
-    <Container>
+    <Container >
       <div className="link">
         <p>
           <TbMenu /> Link #{count}
@@ -125,6 +102,7 @@ export const AddLink: FC<AddLinkProps> = ({ count, onRemove, register }) => {
         </select>
         <label htmlFor="links">link</label>
         <input
+        
           type="text"
           placeholder="🔗 e.g https://github.com/eshginfarzali"
          {...register(`links${count}`, { required: "Link is required" })}

@@ -9,9 +9,9 @@
   font-family: Instrument Sans;
   outline: none;
 }
-body{
+/* body{
   padding: 15px;
-}
+} */
 :root {
   --button-color: #633cff;
   --buttton-active: #beadff;
@@ -21,7 +21,7 @@ body{
   --grey-color: #d9d9d9;
   --sliver-white: #fafafa;
   --white-color: #ffffff;
-  --error--color: #ff3939;
+  --error-color: #ff3939;
 }
 a{
   color: unset;

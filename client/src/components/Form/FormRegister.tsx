@@ -67,10 +67,10 @@ export const FormRegister = () => {
       </p>
       <div>
         {errors?.email && (
-          <p style={{ color: "red" }}>{errors?.email.message}</p>
+          <p style={{ color: "var(--error-color)" }}>{errors?.email.message}</p>
         )}
         {errors?.password && (
-          <p style={{ color: "red" }}>{errors?.password.message}</p>
+          <p style={{ color: "var(--error-color)" }}>{errors?.password.message}</p>
         )}
       </div>
       <Button text="Create new account" />
