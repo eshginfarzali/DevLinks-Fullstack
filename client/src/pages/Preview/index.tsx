@@ -56,6 +56,9 @@ const Header = styled.div`
       color: var(--white-color);
       cursor: pointer;
       padding: 10px;
+      &:hover{
+        background-color: var( --buttton-active);
+      }
     }
   }
 `;
