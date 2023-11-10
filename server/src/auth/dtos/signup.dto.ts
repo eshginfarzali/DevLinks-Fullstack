@@ -14,5 +14,8 @@ export class SignUpDto {
   @IsString()
   @IsOptional()
   lastName: string;
-
+  
+  @IsString()
+  @IsOptional()
+  image: string;
 }
